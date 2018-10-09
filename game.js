@@ -119,19 +119,19 @@ class Game{
     this.rightButton.addEventListener('touchstart',this._goRight)
     
 
-    let loop = function (){
+    this.loop = function () {
       this._clearAll();
       this._updateAll();
       this._renderAll();
 
       if (this.counter > 0) {
-        requestAnimationFrame(loop);
+        requestAnimationFrame(this.loop);
       } else {
         this.gameover();
       }
     }
     //cada segundo ejecuta un setInterval que actualiza el contador de tiempo
-    requestAnimationFrame(loop);
+    requestAnimationFrame(this.loop);
     this.intervalId = setInterval(function() {
       this.countDown(1);
     }, 1000);
